@@ -269,11 +269,6 @@ public class VentanaBedelia extends JFrame {
 				e.printStackTrace();
 			}
 		}
-		
-
-
-		
-
 
 	}
 
