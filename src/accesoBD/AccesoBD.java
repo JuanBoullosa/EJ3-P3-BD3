@@ -73,9 +73,9 @@ public class AccesoBD {
 		try 
 		{
 			Consultas cons = new Consultas();
-			String query = cons.listarExamenes();
+			String query = cons.listarResultados();
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setInt(2, cedula); //aca pongo como que la segunda columna sea solo de cedula! que pasan como parametro
+			pstmt.setInt(1, cedula); //aca pongo como que la segunda columna sea solo de cedula! que pasan como parametro
 			ResultSet rs = pstmt.executeQuery();
 			
 			while (rs.next())
