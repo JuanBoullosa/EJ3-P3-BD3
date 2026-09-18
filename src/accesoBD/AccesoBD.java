@@ -65,6 +65,37 @@ public class AccesoBD {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public List<Resultado> listarResultados(Connection con, int cedula)	throws SQLException
+	{
+		List<Resultado> lista = new LinkedList();
+		try 
+		{
+			Consultas cons = new Consultas();
+			String query = cons.listarExamenes();
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setInt(2, cedula); //aca pongo como que la segunda columna sea solo de cedula! que pasan como parametro
+			ResultSet rs = pstmt.executeQuery();
+			
+			while (rs.next())
+			{
+				String codigo = rs.getString("codigo");
+				int ced = rs.getInt("cedula");
+				int calificacion = rs.getInt("calificacion");
+				Resultado resu = new Resultado(codigo, ced, calificacion);
+				lista.add(resu);
+			}
+			rs.close();
+			pstmt.close();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return lista;
+		
+	}
 
 
 
